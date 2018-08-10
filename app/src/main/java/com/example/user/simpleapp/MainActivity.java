@@ -1,9 +1,11 @@
 package com.example.user.simpleapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Post> call, Response<Post> response) {
                 if(response.code() == 200 && response.body() != null) {
                     showResponse(response.body().toString());
-                    Toast.makeText(getApplicationContext(), "Moving to next screen", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                    startActivity(intent);
+//                    Toast.makeText(getApplicationContext(), "Moving to next screen", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_LONG).show();
                 }
