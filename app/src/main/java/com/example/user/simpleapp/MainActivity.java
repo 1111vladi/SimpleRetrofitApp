@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mResponse;
     private APIService mAPIService;
 
-    private static final String TAG = "Something";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mResponse = (TextView)findViewById(R.id.response);
         Button sendBtn = (Button) findViewById(R.id.send);
 
-        mAPIService = ApiUtils.getAPIService();
+        mAPIService = ApiUtils.getAPIService(ApiUtils.HTTPUrls.MAIN);
 
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
-                Log.e(TAG, "Error Code ***");
+                Log.e("", "Error Code ***");
             }
         });
     }
